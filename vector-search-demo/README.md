@@ -8,7 +8,7 @@ This demo shows how to:
 
 ## Setup
 
-1. Fill in your credentials in  `.env` 
+1. Copy `.env.example` to `.env` and fill in your credentials in  `.env` 
 2. Install dependencies:
 
 ```bash
