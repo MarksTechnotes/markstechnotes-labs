@@ -1,0 +1,25 @@
+CREATE TABLE PRODUCT_VECTORS (
+    VECTOR_ID        VARCHAR2(256) PRIMARY KEY,  -- e.g., REVIEW_ID or PRODUCT_ID or 
+    PRODUCT_ID       VARCHAR2(64),              -- foreign key to relational table
+    REVIEW_ID        VARCHAR2(256),             -- optional, if embedding per review
+    VECTOR_SOURCE    VARCHAR2(50),              -- e.g., 'CONCATENTATED_CONTENT', 'ABOUT_PRODUCT'
+    EMBEDDING_VECTOR VECTOR(768),              -- embedding dimension, adjust to your model
+    CREATED_AT       TIMESTAMP DEFAULT SYSTIMESTAMP
+);
+
+
+INSERT INTO PRODUCT_VECTORS (
+    VECTOR_ID,
+    PRODUCT_ID,
+    REVIEW_ID,
+    VECTOR_SOURCE,
+    EMBEDDING_VECTOR
+)
+SELECT
+    SYS_GUID(),
+    PRODUCT_ID,
+    REVIEW_ID,
+    'CONCANTENATED_CONTENT',
+    EMBEDDING_VECTOR
+FROM AMAZON_WITH_EMBEDDINGS
+WHERE EMBEDDING_VECTOR IS NOT NULL;
