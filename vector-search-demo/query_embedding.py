@@ -47,8 +47,8 @@ if len(query_embedding) != 768:
 print(len(query_embedding))
 cursor = conn.cursor()
 
-# Convert Python list → JSON-like string "[0.1, 0.2, ...]" required by TO_VECTOR()
-vector_str = json.dumps(query_embedding)  # produces '[0.01,0.01,...]'
+# Convert Python list → JSON-like string [0.1, 0.2, ...] required by TO_VECTOR()
+vector_str = json.dumps(query_embedding)  # produces [0.01,0.2,...]'
 print(vector_str)
 
 # Minimal SQL to test TO_VECTOR()
