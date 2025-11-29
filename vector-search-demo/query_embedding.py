@@ -13,7 +13,7 @@ dsn = os.getenv("ADB_DSN")
 
 # Load embedding model and encode the query text into a 768-dimensional vector
 model = SentenceTransformer("sentence-transformers/all-mpnet-base-v2")
-query_text = "wireless headphones with noise cancellation"
+query_text = "55 inch HDTV with high resolution display"
 query_embedding = model.encode(query_text).tolist()
 
 
